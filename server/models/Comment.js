@@ -13,7 +13,7 @@ const commentSchema = new Schema(
       minLength: 1,
       maxLength: 500,
     },
-    username: {
+    author: {
       type: String,
       required: true,
     },
