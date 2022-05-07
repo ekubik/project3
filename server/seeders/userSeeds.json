@@ -1,0 +1,35 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Johnson",
+    "username": "jojo",
+    "email": "johnjo@gmail.com",
+    "password": "password1"
+  },
+  {
+    "firstName": "Anne",
+    "lastName": "Anderson",
+    "username": "annerocks",
+    "email": "sciAnne-ce@gmail.com",
+    "password": "password2"
+  }, {
+    "firstName": "Jamie",
+    "lastName": "Jamieson",
+    "username": "ofquartz2022",
+    "email": "ofquartz@gmail.com",
+    "password": "password3"
+  },
+  {
+    "firstName": "Eva",
+    "lastName": "Evans",
+    "username": "geologyforEva",
+    "email": "forEva-geology@gmail.com",
+    "password": "password4"
+  },{
+    "firstName": "Gail",
+    "lastName": "Gale",
+    "username": "windyGail",
+    "email": "gailGale@gmail.com",
+    "password": "password5"
+  }
+]

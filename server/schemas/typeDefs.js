@@ -29,8 +29,11 @@ type Comment {
     createdAt: String
 
 type Query {
-    users: [User]
-    rocks: [Rock]
+    users: [User]!
+    rocks: [Rock]!
+    user (userId: ID!): User
+    rock (rockId: ID!): Rock
+    me: User
 }
 `;
 
