@@ -2,30 +2,35 @@ const db = require("../config/connection");
 const { User, Rock } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const rockSeeds = require("./rockSeeds.json");
+const { default: mongoose } = require("mongoose");
 
 db.once("open", async () => {
-  try {
-    await Rock.deleteMany({});
-    await User.deleteMany({});
+  await Rock.deleteMany({});
+  await User.deleteMany({});
 
-    await User.create(userSeeds);
+  await User.create(userSeeds);
 
-    for (let i = 0; i < rockSeeds.length; i++) {
-      const { _id, user } = await Rock.create(rockSeeds[i]);
-      const owner = await User.findOneAndUpdate(
+  for (let i = 0; i < rockSeeds.length; i++) {
+    // const { _id, user } = await Rock.create(rockSeeds[i]);
+    try {const result = await Rock.create(rockSeeds[i]);
+    //console.log("result", result);
+    const rockId = result._id;
+    const user = result.user;
+    const owner = await User.findOneAndUpdate(
         { username: user },
         {
+          // this is not working
           $addToSet: {
-            rocks: _id,
+            rocks: mongoose.Types.ObjectId(rockId),
           },
         }
       );
-    }
-  } catch (err) {
+  
+    } catch (err) {
     console.error(err);
     process.exit(1);
   }
+  }
 
   console.log("Success!");
-  process.exit(0);
-});
+  process.exit(0)})

@@ -19,7 +19,7 @@ const rockSchema = new Schema(
       type: String,
     },
     user: {
-      type: Schema.Types.ObjectId,
+      type: "String",
       ref: "User",
     },
     dateCollected: {

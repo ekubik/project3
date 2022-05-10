@@ -26,7 +26,7 @@ type Comment {
     commentId: ID
     commentBody: String
     author: String
-    createdAt: String
+    createdAt: String }
 
 type Query {
     users: [User]!
