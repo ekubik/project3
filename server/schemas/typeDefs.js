@@ -33,7 +33,7 @@ type Query {
     rocks: [Rock]!
     user(userId: ID!): User
     rock(rockId: ID!): Rock
-    me: User
+    myprofile: User
 }
 `;
 

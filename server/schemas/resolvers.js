@@ -1,4 +1,6 @@
+const { AuthenticationError } = require('apollo-server-express'); 
 const { User, Rock } = require("../models");
+const {signToken} = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -6,7 +8,7 @@ const resolvers = {
       return User.find().populate("rocks");
     },
     rocks: async () => {
-      return Rock.find();
+      return Rock.find().populate("users");
     },
   },
 };
