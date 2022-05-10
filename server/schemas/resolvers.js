@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express'); 
+const { AuthenticationError } = require("apollo-server-express");
 const { User, Rock } = require("../models");
-const {signToken} = require("../utils/auth");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -9,6 +9,25 @@ const resolvers = {
     },
     rocks: async () => {
       return Rock.find().populate("users");
+    },
+  },
+  Mutation: {
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError("No user found with this email address");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
   },
 };
