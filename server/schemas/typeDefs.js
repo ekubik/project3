@@ -18,7 +18,7 @@ const typeDefs = gql`
     type: String
     description: String
     origin: String
-    user: User
+    user: String
     dateCollected: String
     comments: [Comment]
   }

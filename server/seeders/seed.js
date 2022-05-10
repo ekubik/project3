@@ -11,7 +11,6 @@ db.once("open", async () => {
   await User.create(userSeeds);
 
   for (let i = 0; i < rockSeeds.length; i++) {
-    // const { _id, user } = await Rock.create(rockSeeds[i]);
     try {const result = await Rock.create(rockSeeds[i]);
     //console.log("result", result);
     const rockId = result._id;
@@ -19,7 +18,6 @@ db.once("open", async () => {
     const owner = await User.findOneAndUpdate(
         { username: user },
         {
-          // this is not working
           $addToSet: {
             rocks: mongoose.Types.ObjectId(rockId),
           },

@@ -8,7 +8,7 @@ const resolvers = {
       return User.find().populate("rocks");
     },
     rocks: async () => {
-      return Rock.find().populate("users");
+      return Rock.find();
     },
   },
   Mutation: {

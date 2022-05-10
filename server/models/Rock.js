@@ -19,11 +19,11 @@ const rockSchema = new Schema(
       type: String,
     },
     user: {
-      type: "String",
-      ref: "User",
+      type: String,
+      //ref: "User",
     },
     dateCollected: {
-      type: "String",
+      type: String,
       required: true,
     },
     comments: [commentSchema],
