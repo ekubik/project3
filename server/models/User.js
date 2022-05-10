@@ -29,7 +29,7 @@ const userSchema = new Schema(
       required: true,
       minLength: 6,
       maxLength: 15,
-      match: [/^[A-Za-z0-9]$/],
+      match: [/[A-Za-z0-9]/],
     },
     bio: {
       type: String,
@@ -68,6 +68,6 @@ userSchema.virtual("rockCollection").get(function () {
 });
 
 //Initialise user model
-const User = model("User", UserSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

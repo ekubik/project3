@@ -9,7 +9,6 @@ const rockSchema = new Schema(
     },
     type: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
@@ -18,7 +17,6 @@ const rockSchema = new Schema(
     //image: {}
     origin: {
       type: String,
-      required: true,
     },
     user: {
       type: Schema.Types.ObjectId,

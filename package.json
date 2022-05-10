@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/ekubik/what-the-rock#readme",
   "dependencies": {
-    "cloudinary": "^1.29.1"
+    "cloudinary": "^1.29.1",
+    "moment": "^2.29.3"
   }
 }

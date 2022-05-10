@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Chert",
+    "description": "Sedimentary rock. Fine grains.",
+    "dateCollected": "31/05/2004",
+    "user": "jojo"
+  },
+  {
+    "name": "Quartz",
+    "description": "Purple colour. Also known as amethyst. Mineral containing silicon and oxygen.",
+    "dateCollected": "23/03/2008",
+    "user": "annerocks"
+  },
+  {
+    "name": "Plagioclase Feldspar",
+    "description": "Silicate mineral. White colour. ",
+    "dateCollected": "22/11/1999",
+    "user": "ofquartz20222"
+  },
+  {
+    "name": "Halite",
+    "description": "Rock salt. White to pink in colour.",
+    "dateCollected": "19/11/2015",
+    "user": "geologyforEva"
+  },
+  {
+    "name": "Pyrite",
+    "description": "Fool's Gold. Cubic Crystals. Lustrous.",
+    "dateCollected": "05/02/2002",
+    "user": "windyGail"
+  }
+]
