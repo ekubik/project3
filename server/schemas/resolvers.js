@@ -8,17 +8,26 @@ const resolvers = {
       return User.find().populate("rocks");
     },
     user: async (parent, { username }) => {
-      return User.findOne({username}).populate("rocks").populate("users")
+      return User.findOne({ username }).populate("rocks").populate("users");
     },
     rocks: async () => {
       return Rock.find();
     },
   },
   Mutation: {
-    newUser: async (parent, { firstName, lastName, username, email, password}) => {
-      const user = await User.create({firstName, lastName, username, email, password});
+    newUser: async (
+      parent,
+      { firstName, lastName, username, email, password }
+    ) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        username,
+        email,
+        password,
+      });
       const token = signToken(user);
-      return {token, user};
+      return { token, user };
     },
 
     login: async (parent, { email, password }) => {
@@ -38,22 +47,78 @@ const resolvers = {
 
       return { token, user };
     },
-    addRock: async (parent, {name, description, dateCollected}, context) => {
+    addRock: async (parent, { name, description, dateCollected }, context) => {
       if (context.user) {
         const rock = await Rock.create({
           name,
           description,
           dateCollected,
-          user: context.user.username
+          user: context.user.username,
         });
 
-        await User.findOneAndUpdate({ _id: context.user._id
-        },
-        {$addToSet: {rocks: rock._id}});
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { rocks: rock._id } }
+        );
         return rock;
       }
-      throw new AuthenticationError("You need to be logged in to create a new rock")
-    }
+      throw new AuthenticationError(
+        "You need to be logged in to create a new rock"
+      );
+    },
+    deleteRock: async (parent, { rockId }, context) => {
+      if (context.user) {
+        const rock = await Rock.findOneAndDelete({
+          _id: rockId,
+          user: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          {
+            _id: context.user._id,
+          },
+          { $pull: { rocks: rock._id } }
+        );
+        return rock;
+      }
+      throw new AuthenticationError("Please log in to delete a rock");
+    },
+    addComment: async (parent, { rockId, commentBody }, context) => {
+      if (context.user) {
+        return Rock.findOneAndUpdate(
+          {
+            _id: rockId,
+          },
+          {
+            $addToSet: {
+              comments: { commentBody, author: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    deleteComment: async (parent, { rockId, commentId }, context) => {
+      if (context.user) {
+        return Rock.findOneAndUpdate(
+          { _id: rockId },
+          {
+            $pull: {
+              comments: {
+                _id: commentId,
+                author: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 

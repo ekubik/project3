@@ -8,8 +8,8 @@ const typeDefs = gql`
     username: String
     email: String
     bio: String
-    rocks: [Rock]
-    friends: [User]
+    rocks: [Rock]!
+    friends: [User]!
   }
 
   type Rock {
@@ -20,7 +20,7 @@ const typeDefs = gql`
     origin: String
     user: String
     dateCollected: String
-    comments: [Comment]
+    comments: [Comment]!
   }
 
   type Comment {
@@ -48,6 +48,10 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addRock(name: String!, description: String!, user: String!, dateCollected: String!): Rock
     deleteRock (rockId: ID!): Rock
+    addComment(rockId: ID!, commentBody: String!): Rock
+    deleteComment(rockId: ID!, commentId: ID!): Rock
+    addFriend(userId: ID!): User
+    deleteFriend(userId: ID!): User
   }
 `;
 
