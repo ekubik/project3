@@ -5,7 +5,6 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
-import { valueFromAST } from "graphql";
 
 const Login = (props) => {
   const [formState, setFormState] = userState({ email: "", password: "" });
@@ -47,8 +46,8 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
+                Congratulations, you are now logged in. {" "}
+                <Link to="/"> Click to return to the homepage</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

@@ -1,15 +1,15 @@
 import React from "react";
-import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import {
-  TwitterIcon,
-  FacebookIcon,
-  GitHubIcon,
-  InstagramIcon,
+  Twitter,
+  Facebook,
+  GitHub,
+  Instagram,
 } from "@mui/icons-material";
 
-const Instagram = () => {
+const InstagramLink = () => {
     return (
-        <a href= "https://instagram.com"> {InstagramIcon} </a>
+        <a href= "https://instagram.com"> {Instagram} </a>
     )
 }
 
@@ -18,16 +18,16 @@ const Footer = () => {
     <footer>
         <div>
         <div>
-        <MailOutlineRoundedIcon />
+        <MailOutlineRounded />
         </div>
       <div>
-        <TwitterIcon />
+        <Twitter />
       </div>
       <div>
-        <FacebookIcon />
+        <Facebook />
       </div>
-      <div> <InstagramIcon/> </div>
-      <div> {Instagram}</div>
+      <div> <Instagram/> </div>
+      <div> {InstagramLink}</div>
       </div>
       <h4> Created by Ewa Kubik 2022</h4>
     </footer>

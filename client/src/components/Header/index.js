@@ -1,4 +1,6 @@
 
+const Header = () => {
+    return <h1> This is my header </h1>
+}
 
-
-module.exports = Header;
+export default Header;
