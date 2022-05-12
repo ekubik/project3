@@ -86,7 +86,7 @@ const SignUp = () => {
           <input
             className="form-input"
             placeholder="*******"
-            name="firstName"
+            name="password"
             type="password"
             value={formState.password}
             onChange={handleInputChange}
@@ -97,3 +97,5 @@ const SignUp = () => {
     </div>
   );
 };
+
+export default SignUp;

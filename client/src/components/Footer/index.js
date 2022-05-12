@@ -5,31 +5,26 @@ import {
   Facebook,
   GitHub,
   Instagram,
+  Copyright,
 } from "@mui/icons-material";
 
-const InstagramLink = () => {
-    return (
-        <a href= "https://instagram.com"> {Instagram} </a>
-    )
-}
 
 const Footer = () => {
   return (
     <footer>
+        <div className="d-flex container-fluid  justify-content">
         <div>
-        <div>
-        <MailOutlineRounded />
+       <a href="mailto:ewa.kubik@hotmail.com"><MailOutlineRounded /> </a>
         </div>
       <div>
-        <Twitter />
+        <a href="https://twitter.com" target="_blank"> <Twitter /> </a>
       </div>
       <div>
-        <Facebook />
+        <a href="https://facebook.com" target="_blank"><Facebook /> </a>
       </div>
-      <div> <Instagram/> </div>
-      <div> {InstagramLink}</div>
+      <div> <a href="https://instagram.com" target="_blank"><Instagram/> </a> </div> 
       </div>
-      <h4> Created by Ewa Kubik 2022</h4>
+      <h4> Created by Ewa Kubik<Copyright />2022</h4>
     </footer>
   );
 };

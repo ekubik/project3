@@ -1,6 +1,9 @@
+import "../../styles/Header.css"
+
+
 
 const Header = () => {
-    return <h1> This is my header </h1>
+    return (<header> <h1> WTR: What the Rock? </h1> </header>)
 }
 
 export default Header;

@@ -1,4 +1,6 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css"
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,6 +14,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import SignUp from "./pages/Signup";
+import Login from "./pages/Login";
+
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -21,13 +25,24 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Router>
       <div>
         <Header />
       </div>
+      <Routes>
+        <Route path = "/"
+        element={<Home/>} />
+        <Route path="/signup"
+        element={<SignUp/>}/>
+        <Route 
+        path = "/login"
+        element = {<Login/>}/>
+      </Routes>
       <div>
         {" "}
         <Footer />{" "}
       </div>
+      </Router>
     </ApolloProvider>
   );
 }
