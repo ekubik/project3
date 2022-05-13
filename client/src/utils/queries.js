@@ -11,8 +11,8 @@ query getRocks {
 }`
 
 export const QUERY_SINGLE_ROCK = gql `
-query getSingleRock($rockId:ID!) {
-    rock (rockId: $rockId) {
+query getSingleRock($rockId: ID!) {
+    rock(rockId: $rockId) {
         _id
         name
         type
@@ -21,7 +21,7 @@ query getSingleRock($rockId:ID!) {
         user
         dateCollected
         comments {
-            _id
+            commentId
             commentBody
             author
             createdAt

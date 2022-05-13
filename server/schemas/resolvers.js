@@ -13,6 +13,9 @@ const resolvers = {
     rocks: async () => {
       return Rock.find();
     },
+    rock: async (parent, {rockId}) => {
+      return Rock.findOne({_id: rockId});
+    },
   },
   Mutation: {
     newUser: async (
