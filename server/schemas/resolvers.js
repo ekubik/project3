@@ -16,6 +16,11 @@ const resolvers = {
     rock: async (parent, {rockId}) => {
       return Rock.findOne({_id: rockId});
     },
+    myprofile: async(parent, args, context) => {
+      if (context.user) { return User.findOne( {_id: context.user._id }).populate("rocks");
+    }
+    throw new AuthenticationError("You must log in to view your profile")
+    },
   },
   Mutation: {
     newUser: async (

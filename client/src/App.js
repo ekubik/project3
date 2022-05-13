@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import SingleRock from "./pages/SingleRock";
+import Profile from "./pages/UserProfile"
 
 
 const httpLink = createHttpLink({
@@ -48,6 +49,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/rocks/:rockId" element={<SingleRock/>} />
+          <Route path = "/myprofile" element = {<Profile/>} />
+          <Route path ="users/:username" element ={<Profile />} />
         </Routes>
         <div>
           {" "}
