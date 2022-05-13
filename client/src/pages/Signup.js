@@ -38,14 +38,6 @@ const SignUp = () => {
     } catch (error) {
       console.error(error);
     }
-
-    setFormState({
-      firstName: "",
-      lastName: "",
-      username: "",
-      email: "",
-      password: "",
-    });
   };
 
   return (
