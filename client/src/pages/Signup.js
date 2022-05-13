@@ -38,6 +38,14 @@ const SignUp = () => {
     } catch (error) {
       console.error(error);
     }
+
+    setFormState({
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -57,7 +65,7 @@ const SignUp = () => {
           ) : (
             <form onSubmit={handleFormSubmit}>
               <input
-              autoComplete="on"
+                autoComplete="on"
                 className="form-input"
                 placeholder="First Name"
                 name="firstName"
