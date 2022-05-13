@@ -5,7 +5,7 @@ const RockList = ({
     rocks,
     title,
     showTitle = true,
-    displayUsername = true,
+    //displayUsername = true,
 
 }) => {
     if (!rocks.length) {
@@ -13,7 +13,10 @@ const RockList = ({
     }
     return (
         <div> {showTitle && <h2> {title}</h2>}
-        {rocks && rocks.map((rock)=> ( <div key={rock._id}>
+        {rocks && rocks.map((rock)=> ( <div key={rock._id} className = "card">
+            <Link to={`/rocks/${rock._id}`}><h3> {rock.name} </h3> </Link>
+            <p> Rock info will go here</p>
+            <Link  to={`/users/${rock.user}`} > {rock.user}  </Link>
              </div>
 
         ))}
@@ -21,3 +24,5 @@ const RockList = ({
         </div>
     )
 }
+
+export default RockList;
