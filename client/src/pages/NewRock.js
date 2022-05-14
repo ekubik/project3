@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_ROCK } from "../utils/mutations";
-import { QUERY_ALL_ROCKS, QUERY_MY_PROFILE } from "../utils/queries";
 
 import Auth from "../utils/auth"
 
@@ -14,7 +13,7 @@ const NewRockForm = () => {
     dateCollected: "",
     user: Auth.getProfile().data.username
   });
-  const [addRock, { error, data }] = useMutation(ADD_ROCK);
+  const [addRock, { error }] = useMutation(ADD_ROCK);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

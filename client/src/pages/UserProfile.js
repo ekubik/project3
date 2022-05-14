@@ -1,22 +1,34 @@
 import React from "react";
 import { Navigate, Link, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 
 import { QUERY_USER, QUERY_MY_PROFILE} from "../utils/queries";
+import { DELETE_ROCK } from "../utils/mutations";
 import Auth from "../utils/auth"
 
 const Profile =() => {
     const {username} = useParams();
-    console.log(username)
     const {loading, data} = useQuery(username ? QUERY_USER : QUERY_MY_PROFILE, {
        variables:  {username: username},
     });
+
+    
 
     const user = data?.user || data?.myprofile|| {};
     console.log(user)
     const rocks = user.rocks || [];
     console.log(rocks);
 
+    const [deleteRock, { error }] = useMutation(DELETE_ROCK);
+    const handleDelete = async (rockId) => {
+        try {
+            const {data} = await deleteRock({ rockId})
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+    }
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/myprofile" />;
 };
@@ -64,9 +76,9 @@ return (
         rocks.map((rock) => (
           <div className="card" key={rock._id}>
             {" "}
-           <Link to={`/rocks/${rock.
-        _id}`}> <h3> {rock.name}</h3> </Link><p> {rock.description} </p>{" "}
-            <p> This rock was collected on {rock.dateCollected} </p>{" "}
+           <Link to={`/rocks/${rock._id}`}> <h3> {rock.name}</h3> </Link><p> {rock.description} </p>{" "}
+            <p> This rock was collected on {rock.dateCollected} </p>
+            <button onClick={handleDelete}> Delete </button>
           </div>
         ))
       )}{" "}

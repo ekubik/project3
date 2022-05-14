@@ -97,7 +97,8 @@ const resolvers = {
         "You need to be logged in to create a new rock"
       );
     },*/
-    deleteRock: async (parent, { rockId }, context) => {
+    deleteRock: async (parent, {rockId}, context) => {
+      console.log ("What")
       if (context.user) {
         const rock = await Rock.findOneAndDelete({
           _id: rockId,
@@ -106,9 +107,9 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           {
-            _id: context.user._id,
+            username: context.user.username,
           },
-          { $pull: { rocks: rock._id } }
+          { $pull: { rocks: {_id: rock._id} } }
         );
         return rock;
       }

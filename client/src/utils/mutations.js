@@ -66,6 +66,9 @@ export const DELETE_ROCK = gql`
     deleteRock(rockId: $rockId) {
       _id
       name
+      description
+      dateCollected
+      user 
     }
   }
 `;
