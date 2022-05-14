@@ -3,16 +3,17 @@ import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import {
   Twitter,
   Facebook,
-  GitHub,
   Instagram,
   Copyright,
 } from "@mui/icons-material";
 
 
+
+
 const Footer = () => {
   return (
     <footer>
-        <div className="d-flex container-fluid  justify-content">
+        <div className="d-flex container justify-content ">
         <div>
        <a href="mailto:ewa.kubik@hotmail.com"><MailOutlineRounded /> </a>
         </div>

@@ -15,28 +15,35 @@ const Header = () => {
       <h1> WTR! </h1> <h2> What The Rock </h2>
       <br />
       <div>
-      <Link to="/"> <HomeRoundedIcon/> </Link>
+        <Link to="/">
+          <button className="btn navButton">
+            {" "}
+            <HomeRoundedIcon fontSize="large" />{" "}
+          </button>{" "}
+        </Link>
         {Auth.loggedIn() ? (
           <>
             <Link to="/myprofile">
               {" "}
-              <button> My profile</button>
+              <button className="navButton"> My profile</button>
             </Link>
-            <button onClick={logout}><Link to="/">  Logout </Link> </button>
+            
+              <Link to="/"> <button className="navButton" onClick={logout}> Log out</button> </Link>{" "}
           </>
         ) : (
           <>
             {" "}
-            <Link className="btn" to="/login">
+            <Link className="btn navButton" to="/login">
               {" "}
               Login{" "}
             </Link>
-            <Link className="btn" to="/signup">
+            <Link className="btn navButton" to="/signup">
               {" "}
               Sign up!
             </Link>
           </>
         )}
+        <hr></hr>
       </div>
     </header>
   );

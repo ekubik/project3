@@ -1,0 +1,18 @@
+
+.redirectLink {
+    text-decoration: none;
+    font-family: 'Blinker', sans-serif; 
+   color: black;
+}
+
+.redirectLink:hover {
+        color: #58727F;
+
+
+}
+
+.rockCards {
+    border: solid 2px #E5E5E5;
+    padding: 40px 20px;
+    margin: 30px 40px;
+}

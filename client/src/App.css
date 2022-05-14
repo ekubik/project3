@@ -1,8 +1,13 @@
 * {
-  background-color: #46809c;
+  background-color: #83AFA6;
 }
 
-a :hover {
-  color: white;
+.navButton {
+    font-family: 'Koulen', cursive;
+    font-size: 25px;
+    border: solid  #E3D9CA 1px;
+}
 
+.navButton:hover {
+color: #D3A284;
 }

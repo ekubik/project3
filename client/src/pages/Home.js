@@ -11,11 +11,11 @@ const Home = () => {
   const rocks = data?.rocks || [];
   return (
     <div>
-      <h2> A rockin' good time awaits </h2>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <RockList rocks={rocks} title="Look at all these Rocks" />
+        <div>
+        <RockList rocks={rocks} title="Look at all these Rocks" /> </div>
       )}
     </div>
   );
