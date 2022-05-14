@@ -6,12 +6,15 @@ import { QUERY_USER, QUERY_MY_PROFILE} from "../utils/queries";
 import Auth from "../utils/auth"
 
 const Profile =() => {
-    const {username: username } = useParams();
+    const {username} = useParams();
+    console.log(username)
     const {loading, data} = useQuery(username ? QUERY_USER : QUERY_MY_PROFILE, {
        variables:  {username: username},
     });
 
-    const user = data?.myprofile || data?.user || {};
+    const user = data?.user || data?.myprofile|| {};
+    console.log(user)
+
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/myprofile" />;
 };

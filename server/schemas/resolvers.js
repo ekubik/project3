@@ -8,19 +8,23 @@ const resolvers = {
       return User.find().populate("rocks");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("rocks").populate("users");
+      console.log(username);
+      return User.findOne({ username }).populate("rocks");
     },
     rocks: async () => {
       return Rock.find();
     },
-    rock: async (parent, {rockId}) => {
-      return Rock.findOne({_id: rockId});
+    rock: async (parent, { rockId }) => {
+      return Rock.findOne({ _id: rockId });
     },
-    myprofile: async(parent, args, context) => {
-      if (context.user) { return User.findOne( {_id: context.user._id }).populate("rocks");
-    }
-    throw new AuthenticationError("You must log in to view your profile")
-    }
+    myprofile: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ username: context.user.username }).populate(
+          "rocks"
+        );
+      }
+      throw new AuthenticationError("You must log in to view your profile");
+    },
   },
   Mutation: {
     newUser: async (
@@ -55,12 +59,31 @@ const resolvers = {
 
       return { token, user };
     },
-    addRock: async (parent, { name, description, dateCollected }, context) => {
+    /*addRock: async (parent, { name, description, dateCollected }, context) => {
       if (context.user) {
         const rock = await Rock.create({
           name,
           description,
           dateCollected,
+          user: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { rocks: rock._id } }
+        );
+        return rock;
+      }
+      throw new AuthenticationError(
+        "You need to be logged in to create a new rock"
+      );
+    },*/
+
+    addRock: async (parent, args, context) => {
+      console.log(args);
+      if (context.user) {
+        const rock = await Rock.create({
+         ...args,
           user: context.user.username,
         });
 
