@@ -41,7 +41,7 @@ export const ADD_ROCK = gql`
     $name: String!
     $description: String!
     $dateCollected: String!
-  ) {
+) {
     addRock(
       name: $name
       description: $description
@@ -61,11 +61,11 @@ export const ADD_ROCK = gql`
   }
 `;
 
-export const DELETE_ROCK = gql `
-mutation deleteRock($rockId: ID!) {
-  deleteRock(rockId: $rockId) {
-    _id
-    name
+export const DELETE_ROCK = gql`
+  mutation deleteRock($rockId: ID!) {
+    deleteRock(rockId: $rockId) {
+      _id
+      name
+    }
   }
-}
-`
+`;

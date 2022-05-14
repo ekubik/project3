@@ -59,27 +59,27 @@ const resolvers = {
 
       return { token, user };
     },
-    /*addRock: async (parent, { name, description, dateCollected }, context) => {
+    addRock: async (parent, { name, description, dateCollected }, context) => {
       if (context.user) {
         const rock = await Rock.create({
           name,
           description,
           dateCollected,
-          user: context.user.username,
+          user: context.user.username
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { rocks: rock._id } }
+          { username: context.user.username },
+          { $push: {rocks: {_id: rock._id}}}
         );
         return rock;
       }
       throw new AuthenticationError(
         "You need to be logged in to create a new rock"
       );
-    },*/
+    },
 
-    addRock: async (parent, args, context) => {
+    /*addRock: async (parent, args, context) => {
       console.log(args);
       if (context.user) {
         const rock = await Rock.create({
@@ -96,7 +96,7 @@ const resolvers = {
       throw new AuthenticationError(
         "You need to be logged in to create a new rock"
       );
-    },
+    },*/
     deleteRock: async (parent, { rockId }, context) => {
       if (context.user) {
         const rock = await Rock.findOneAndDelete({

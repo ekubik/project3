@@ -64,7 +64,8 @@ return (
         rocks.map((rock) => (
           <div className="card" key={rock._id}>
             {" "}
-            <h3> {rock.name}</h3> <p> {rock.description} </p>{" "}
+           <Link to={`/rocks/${rock.
+        _id}`}> <h3> {rock.name}</h3> </Link><p> {rock.description} </p>{" "}
             <p> This rock was collected on {rock.dateCollected} </p>{" "}
           </div>
         ))
