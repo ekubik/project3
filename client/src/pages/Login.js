@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import "../styles/Login.css"
 
 import { LOGIN_USER } from "../utils/mutations";
 
@@ -40,41 +41,55 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="flex-row mb-4 form-container container-fluid">
+      <div className="col-5 col-lg-3 container ">
+        <div className="card row justify-content-centre">
+          <h4 className="card-header text-light">Login</h4>
+          <div className="card-body ">
             {data ? (
               <p>
-                Congratulations, you are now logged in. {" "}
+                Congratulations, you are now logged in.{" "}
                 <Link to="/"> Click to return to the homepage</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="email@email.com"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block"
-                  style={{ cursor: "pointer" }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+                <div className="row">
+                  <label htmlfor="email" className="col-4">
+                    {" "}
+                    Email{" "}
+                  </label>
+                  <input
+                    className="form-input col-7 text-center"
+                    placeholder="email@email.com"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="row">
+                  <label htmlFor="password" className="col-4">
+                    {" "}
+                    Password{" "}
+                  </label>
+                  <input
+                    className="form-input col-7 text-center"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="row justify-content-center">
+                  <button
+                    className="btn btn-block col-3 "
+                    style={{ cursor: "pointer" }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             )}
 

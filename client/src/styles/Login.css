@@ -1,0 +1,36 @@
+.form-container {
+   margin-top: 50px;
+   flex-wrap:wrap;
+}
+
+.card {
+    margin-bottom: 200px;
+    background-color: #E3D9CA;
+    border: solid #352920 2px;
+}
+
+.card-header {
+    background-color: black;
+}
+
+
+
+input { background-color: #E3D9CA;
+
+}
+
+.btn { 
+    font-size: 15px;
+    border: solid  #E3D9CA 1px;
+    border-radius: 10px;
+
+}
+
+.btn:hover {
+color: #D3A284;
+background-color: #50a08f;
+}
+
+.row {
+    flex-wrap: wrap;
+}
