@@ -9,19 +9,20 @@ import {useParams} from "react-router-dom"
 import Auth from "../../utils/auth";
 
 const CommentList = ({comments}) => {
+  let i=0;
 
-  const {rockId} = useParams();
-  const [deleteComment, { error }] = useMutation(DELETE_COMMENT, {
-    variables: { rockId},
+ const {rockId} = useParams();
+ /* const [deleteComment, { error }] = useMutation(DELETE_COMMENT, {
+    variables: { },
   });
   const handleDelete = async () => {
     try {
-      const { data } = await deleteComment({ rockId});
+      const { data } = await deleteComment({ rockId,  commentId: comments[i].commentId})
     } catch (error) {
       console.error(error);
     }
-  };
-
+  }*/
+  
 
 if (!comments.length) {
     return <div><h2> Comments: </h2>
@@ -35,7 +36,7 @@ return (
     <div className="flex-row my-4">
       {comments &&
         comments.map((comment) => (
-          <div key={comment.commentId} className="col-12 mb-3 pb-3">
+          <div key={comment.commentId} className=" card col-10">
             <div className="p-3 bg-dark text-light">
               <h5 className="card-header">
                 {comment.author} left a comment{" "}
@@ -50,7 +51,7 @@ return (
               {Auth.loggedIn() &&
               Auth.getProfile().data.username === comment.author ? (
                 <div>
-                    <button onClick={handleDelete}>
+                    <button className="btn submitButton">
                       <HighlightOff></HighlightOff> Delete{" "}
                     </button>{" "}
                   

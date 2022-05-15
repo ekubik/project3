@@ -33,6 +33,7 @@ const CommentForm = ({rockId}) => {
          setCommentBody(value);
        }
      };
+     
     return ( <div>
         <h2> What do you think about this rock?</h2>
         <p> Join the discussion. </p>

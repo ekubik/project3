@@ -64,6 +64,7 @@ export const ADD_ROCK = gql`
 export const DELETE_ROCK = gql`
   mutation deleteRock($rockId: ID!) {
     deleteRock (rockId: $rockId) {
+      _id
       name
       description
       dateCollected

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import "../styles/SignUp.css"
 
 import { ADD_ROCK } from "../utils/mutations";
 
@@ -44,31 +45,42 @@ const NewRockForm = () => {
   };
 
   return (
-    <div>
-      <h2> Add a new rock to your collection </h2>
+    <div className="container-fluid">
+      <h2 id="newRock"> Add a new rock to your collection </h2>
       {Auth.loggedIn() ? (
+        <div className="container justify-content-center">
         <form onSubmit={handleFormSubmit}>
           <div>
-            <label htmlFor="name"> Enter a name for your rock</label>
+            <div className="row">
+            <label className="col-10" htmlFor="name"> Enter a name for your rock</label>
             <input
               autoComplete="on"
-              className="form-input"
+              className="col-10 form-input"
               placeholder="Name"
               name="name"
               type="text"
               value={formState.name}
               onChange={handleInputChange}
             ></input>
-            <input
-              className="form-input"
+            </div>
+            <div className="row">
+            <label className= "col-10" htmlFor="description"> Add a description. Features, interesting notes, anything you want! </label>
+            <textarea
+              className="form-input col-10"
               placeholder="Description"
               name="description"
               type="text"
               value={formState.description}
               onChange={handleInputChange}
-            ></input>
+            ></textarea>
+            </div>
+            <div className ="row">
+            <label className="col-10" htmlFor="dateCollected">
+              {" "}
+              When did you add this rock to your collection ?
+            </label>
             <input
-              className="form-input"
+              className="form-input col-10"
               placeholder="DD/MM/YYYY"
               autoComplete="off"
               name="dateCollected"
@@ -76,23 +88,25 @@ const NewRockForm = () => {
               value={formState.dateCollected}
               onChange={handleInputChange}
             ></input>
-            <button> Submit </button>
+            </div>
+            <div className="row justify-content-center">
+            <button id ="submitNew" className="btn submitButton col-1"> Submit </button>
+            </div>
           </div>
           {data && (
             <div className="my-3 col-8 text-white p-3">
               <strong>Your rock has been added to the database. </strong> Click
-              <a href="/myprofile">
-                here
-              </a> to return to your profile.
-              
+              <a href="/myprofile">here</a> to return to your profile.
             </div>
-          )};
+          )}
+          ;
           {error && (
             <div className="col-12 my-3 bg-danger text-white p-3">
               There's been a problem with your request. Please try again.
             </div>
           )}
         </form>
+        </div>
       ) : (
         <p>Log in to add a rock</p>
       )}

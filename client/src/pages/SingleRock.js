@@ -19,12 +19,11 @@ const SingleRock = () => {
   });
   const rock = data?.rock || {};
 
-
-  const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId}});
+  const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId }});
   const handleDelete = async () => {
+    console.log(rockId);
     try {
       const { data } = await deleteRock({rockId});
-      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +34,7 @@ const SingleRock = () => {
   }
   return (
     <div>
-      <div key={rock._id} className="card">
+      <div>
         <div>
           {Auth.loggedIn() && Auth.getProfile().data.username === rock.user ? (
             <div>
@@ -50,24 +49,27 @@ const SingleRock = () => {
           )}
         </div>
       </div>
-      <h3> {rock.name} </h3>
-      <p> {rock.type} </p>
-      <h4>Origin: {rock.origin} </h4>
-      <h4>Description:</h4>
-      <div>{rock.description}</div>
-      <p>
-        {" "}
-        <Link to={`/users/${rock.user}`}> {rock.user} </Link> added this rock to
-        their collection on {rock.dateCollected}
-      </p>
-      <div className="col-12 col-md-10 mb-5">
-        <CommentList
-          comments={rock.comments}
-          username={rock.user}
-          rockId={rock._id}/>
-      </div>
-      <div className="m-3 p-4">
-        <CommentForm rockId={rock._id} />
+      <div key={rock._id}>
+        <h3> {rock.name} </h3>
+        <p> {rock.type} </p>
+        <h4>Origin: {rock.origin} </h4>
+        <h4>Description:</h4>
+        <div>{rock.description}</div>
+        <p>
+          {" "}
+          <Link to={`/users/${rock.user}`}> {rock.user} </Link> added this rock
+          to their collection on {rock.dateCollected}
+        </p>
+        <div className="col-12 col-md-10 mb-5">
+          <CommentList
+            comments={rock.comments}
+            username={rock.user}
+            rockId={rock._id}
+          />
+        </div>
+        <div className="m-3 p-4">
+          <CommentForm rockId={rock._id} />
+        </div>
       </div>
     </div>
   );

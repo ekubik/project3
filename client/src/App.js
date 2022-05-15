@@ -51,10 +51,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/rocks/:rockId" element={<SingleRock />} />
+            <Route
+              path="/rocks/:rockId"
+              element={<SingleRock />}
+            />
             <Route path="/myprofile" element={<Profile />} />
             <Route path="users/:username" element={<Profile />} />
             <Route path="/addRock" element={<NewRockForm />} />
+            <Route path="*" element={<Home />} />
           </Routes>
           <div> </div>
           <Footer />{" "}

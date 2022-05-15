@@ -39,6 +39,11 @@ input {
     margin-bottom: 10px
 }
 
+textarea {
+    background-color: white;
+    height: 80px;
+}
+
 .redirectLink {
     text-decoration: none;
     font-family: 'Blinker', sans-serif;
@@ -56,4 +61,16 @@ h2 {
 
 input {
     background-color: white;;
+}
+
+#submitNew {
+    font-size: 20px;
+    padding: 10px 30px;
+}
+
+#newRock {
+    font-family: 'Koulen', cursive;
+    font-size: 30px;
+    margin-bottom: 40px;
+
 }

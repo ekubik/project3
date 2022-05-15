@@ -103,7 +103,7 @@ const resolvers = {
     deleteRock: async (_, rockId, context) => {
       console.log ("What")
       if (context.user) {
-        const rock = await Rock.findOneAndDelete({
+         await Rock.findOneAndDelete({
           rockId,
           user: context.user.username,
         });
@@ -112,13 +112,13 @@ const resolvers = {
           {
             username: context.user.username,
           },
-          { $pull: { rocks: { _id: rock._id } } },
+          { $pull: { rocks: { _id: rockId } } },
             {
             new: true,
             runValidators: true,
           }
         );
-        return rock;
+        return "Success";
       }
       throw new AuthenticationError("Please log in to delete a rock");
     },

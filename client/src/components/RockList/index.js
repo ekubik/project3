@@ -18,8 +18,9 @@ const RockList = ({
         <div>
           {rocks &&
             rocks.map((rock) => (
-              <div>
-                <div className="rockCards" key={rock._id}>
+              <div key={rock._id}>
+                <div  className="rockCards">
+              
                   <Link className="redirectLink" to={`/rocks/${rock._id}`}>
                     <h3> {rock.name} </h3>
                   </Link>
