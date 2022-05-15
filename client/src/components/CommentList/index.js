@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { DELETE_COMMENT } from "../../utils/mutations";
 import { QUERY_MY_PROFILE } from "../../utils/queries";
 import {useParams} from "react-router-dom"
+import "../../styles/Comments.css"
 
 import Auth from "../../utils/auth";
 
@@ -33,25 +34,28 @@ return (
   <div>
     <h2> Comments: </h2>
     <h3> Here's what people are saying...</h3>
-    <div className="flex-row my-4">
+    <div className="flex-row my-4 ">
       {comments &&
         comments.map((comment) => (
-          <div key={comment.commentId} className=" card col-10">
-            <div className="p-3 bg-dark text-light">
-              <h5 className="card-header">
+          <div key={comment.commentId}>
+            <div className="p-3 comment">
+              <div className="cardHead">
+              <h5 className="text-dark">
                 {comment.author} left a comment{" "}
                 <span style={{ fontSize: "0.825rem" }}>
                   on {comment.createdAt}
                 </span>
               </h5>
-              <p className="card-body">{comment.commentBody}</p>
+              </div>
+              <div>
+              <p className="commentBody">{comment.commentBody}</p>
             </div>
 
             <div>
               {Auth.loggedIn() &&
               Auth.getProfile().data.username === comment.author ? (
                 <div>
-                    <button className="btn submitButton">
+                    <button id="deleteButton" className="btn submitButton">
                       <HighlightOff></HighlightOff> Delete{" "}
                     </button>{" "}
                   
@@ -60,6 +64,7 @@ return (
                 <span></span>
               )}
             </div>
+          </div>
           </div>
         ))}
     </div>

@@ -1,0 +1,26 @@
+
+h5 {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.comment {
+    margin-top: 10px;
+    background-color: #83AFA6;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+.commentBody {
+    background-color: white;
+    height: 80px;
+    font-weight: bolder;
+    padding-top:10px;
+    padding-left: 5px;
+    margin-top: 15px
+}
+#deleteButton {
+    background-color: #83AFA6;
+    color: black;
+    border: solid 2px black
+}
