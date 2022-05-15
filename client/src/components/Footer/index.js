@@ -7,13 +7,16 @@ import {
   Copyright,
 } from "@mui/icons-material";
 
+import "../../styles/Footer.css"
+
 
 
 
 const Footer = () => {
   return (
-    <footer>
-        <div className="d-flex container justify-content ">
+    <footer className = "container-fluid">
+      <div className = "row">
+        <div className="d-flex container justify-content-center ">
         <div>
        <a href="mailto:ewa.kubik@hotmail.com"><MailOutlineRounded /> </a>
         </div>
@@ -25,7 +28,10 @@ const Footer = () => {
       </div>
       <div> <a href="https://instagram.com" target="_blank"><Instagram/> </a> </div> 
       </div>
-      <h4> Created by Ewa Kubik<Copyright />2022</h4>
+      <div className=" d-flex container justify-content-center">
+      <h4> Created by Ewa Kubik   <Copyright fontSize="small" />    2022</h4>
+      </div>
+     </div>
     </footer>
   );
 };

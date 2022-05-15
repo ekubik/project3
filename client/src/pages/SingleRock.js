@@ -24,6 +24,7 @@ const SingleRock = () => {
   const handleDelete = async () => {
     try {
       const { data } = await deleteRock({rockId});
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -63,9 +64,7 @@ const SingleRock = () => {
         <CommentList
           comments={rock.comments}
           username={rock.user}
-          rockId={rock._id}
-          commentId={rock.comments.commentId}
-        />
+          rockId={rock._id}/>
       </div>
       <div className="m-3 p-4">
         <CommentForm rockId={rock._id} />

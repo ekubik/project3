@@ -13,7 +13,7 @@ const NewRockForm = () => {
     dateCollected: "",
     user: Auth.getProfile().data.username
   });
-  const [addRock, { error }] = useMutation(ADD_ROCK);
+  const [addRock, { data, error }] = useMutation(ADD_ROCK);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +34,8 @@ const NewRockForm = () => {
         variables: { ...formState, user: Auth.getProfile().data.username },
       });
       console.log(formState)
-      setFormState("");
+      setFormState(" ");
+
 
       //Auth.login(data.newUser.token);
     } catch (error) {
@@ -77,6 +78,15 @@ const NewRockForm = () => {
             ></input>
             <button> Submit </button>
           </div>
+          {data && (
+            <div className="my-3 col-8 text-white p-3">
+              <strong>Your rock has been added to the database. </strong> Click
+              <a href="/myprofile">
+                here
+              </a> to return to your profile.
+              
+            </div>
+          )};
           {error && (
             <div className="col-12 my-3 bg-danger text-white p-3">
               There's been a problem with your request. Please try again.

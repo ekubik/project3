@@ -43,20 +43,20 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Header />
-        </div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/rocks/:rockId" element={<SingleRock/>} />
-          <Route path = "/myprofile" element = {<Profile/>} />
-          <Route path ="users/:username" element ={<Profile/>} />
-          <Route path= "/addRock" element= {< NewRockForm/>} />
-        </Routes>
-        <div>
-          {" "}
+        <div className="container-fluid">
+          <div>
+            <Header />
+          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/rocks/:rockId" element={<SingleRock />} />
+            <Route path="/myprofile" element={<Profile />} />
+            <Route path="users/:username" element={<Profile />} />
+            <Route path="/addRock" element={<NewRockForm />} />
+          </Routes>
+          <div> </div>
           <Footer />{" "}
         </div>
       </Router>
