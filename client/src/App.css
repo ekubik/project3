@@ -2,6 +2,13 @@
   background-color: #83AFA6;
 }
 
+img {
+  height: 120px;
+  width: 150px;
+  border: solid 1px black;
+}
+
+
 .navButton {
     font-family: 'Koulen', cursive;
     font-size: 25px;

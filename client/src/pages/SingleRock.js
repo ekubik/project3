@@ -51,6 +51,7 @@ const SingleRock = () => {
       </div>
       <div key={rock._id}>
         <h3> {rock.name} </h3>
+        <img src={require("../../src/assets/angry-rock.jpg")}/>
         <p> {rock.type} </p>
         <h4>Origin: {rock.origin} </h4>
         <h4>Description:</h4>

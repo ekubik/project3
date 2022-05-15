@@ -19,11 +19,13 @@ const RockList = ({
           {rocks &&
             rocks.map((rock) => (
               <div key={rock._id}>
-                <div  className="rockCards">
-              
+                <div className="rockCards">
                   <Link className="redirectLink" to={`/rocks/${rock._id}`}>
                     <h3> {rock.name} </h3>
                   </Link>
+                  <div>
+                    <img src={require("../../assets/angry-rock.jpg")}/>
+                  </div>
                   <p> Rock info will go here</p>
                   <Link className="redirectLink" to={`/users/${rock.user}`}>
                     {rock.user}
