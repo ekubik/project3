@@ -63,12 +63,47 @@ export const ADD_ROCK = gql`
 
 export const DELETE_ROCK = gql`
   mutation deleteRock($rockId: ID!) {
-    deleteRock(rockId: $rockId) {
+    deleteRock (rockId: $rockId) {
+      name
+      description
+      dateCollected
+      comments {
+        commentId
+        commentBody
+        author
+        createdAt
+      }
+    }
+  }
+`;
+
+export const ADD_COMMENT = gql ` 
+mutation addComment ($rockId: ID!, $commentBody: String!) {
+  addComment (rockId: $rockId, commentBody: $commentBody) {
+    _id
+    name
+    description
+    dateCollected
+    comments {
+    commentId
+    commentBody
+    author
+    createdAt }
+  }
+}`
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($rockId: ID!, $commentId: ID!) {
+    deleteComment(rockId: $rockId, commentId: $commentId) {
       _id
       name
       description
       dateCollected
-      user 
+      comments {
+        commentId
+        commentBody
+        createdAt
+      }
     }
   }
 `;

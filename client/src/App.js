@@ -52,7 +52,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/rocks/:rockId" element={<SingleRock/>} />
           <Route path = "/myprofile" element = {<Profile/>} />
-          <Route path ="users/:username" element ={<Profile />} />
+          <Route path ="users/:username" element ={<Profile/>} />
           <Route path= "/addRock" element= {< NewRockForm/>} />
         </Routes>
         <div>

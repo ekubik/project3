@@ -13,23 +13,13 @@ const Profile =() => {
        variables:  {username: username},
     });
 
-    
 
     const user = data?.user || data?.myprofile|| {};
     console.log(user)
     const rocks = user.rocks || [];
     console.log(rocks);
 
-    const [deleteRock, { error }] = useMutation(DELETE_ROCK);
-    const handleDelete = async (rockId) => {
-        try {
-            const {data} = await deleteRock({ rockId})
-        }
-        catch (error) {
-            console.error(error);
-        }
 
-    }
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/myprofile" />;
 };
@@ -83,7 +73,14 @@ return (
             </Link>
             <p> {rock.description} </p>{" "}
             <p> This rock was collected on {rock.dateCollected} </p>
-            {username ? <span></span> : <button onClick={handleDelete}> <Delete></Delete> Delete </button>}
+            {username ? (
+              <span></span>
+            ) : (
+              <button>
+                {" "}
+                <Delete></Delete> Delete{" "}
+              </button>
+            )}
           </div>
         ))
       )}{" "}

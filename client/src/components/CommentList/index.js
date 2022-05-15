@@ -1,7 +1,28 @@
 import React from "react";
 import SingleRock from "../../pages/SingleRock";
+import { HighlightOff } from '@mui/icons-material';
+import { useMutation } from "@apollo/client";
+import { DELETE_COMMENT } from "../../utils/mutations";
+import { QUERY_MY_PROFILE } from "../../utils/queries";
+import {useParams} from "react-router-dom"
 
-const CommentList = ({comments = []}) => {
+import Auth from "../../utils/auth";
+
+const CommentList = ({comments}) => {
+
+  const {rockId} = useParams();
+  const [deleteComment, { error }] = useMutation(DELETE_COMMENT, {
+    variables: { rockId},
+  });
+  const handleDelete = async () => {
+    try {
+      const { data } = await deleteComment({ rockId});
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
 if (!comments.length) {
     return <div><h2> Comments: </h2>
     <p> Be the first to leave a comment on this rock...</p> </div>;
@@ -23,6 +44,7 @@ return (
                   </span>
                 </h5>
                 <p className="card-body">{comment.commentBody}</p>
+<button> <HighlightOff onClick={handleDelete}> </HighlightOff>  </button>
               </div>
             </div>
           ))}

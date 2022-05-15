@@ -70,7 +70,10 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { username: context.user.username },
-          { $push: {rocks: {_id: rock._id}}}
+          { $push: {rocks: {_id: rock._id}}},
+          {
+            new: true,
+          }
         );
         return rock;
       }
@@ -97,11 +100,11 @@ const resolvers = {
         "You need to be logged in to create a new rock"
       );
     },*/
-    deleteRock: async (parent, {rockId}, context) => {
+    deleteRock: async (_, rockId, context) => {
       console.log ("What")
       if (context.user) {
         const rock = await Rock.findOneAndDelete({
-          _id: rockId,
+          rockId,
           user: context.user.username,
         });
 
@@ -109,7 +112,11 @@ const resolvers = {
           {
             username: context.user.username,
           },
-          { $pull: { rocks: {_id: rock._id} } }
+          { $pull: { rocks: { _id: rock._id } } },
+            {
+            new: true,
+            runValidators: true,
+          }
         );
         return rock;
       }
@@ -135,13 +142,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     deleteComment: async (parent, { rockId, commentId }, context) => {
+      console.log(commentId);
       if (context.user) {
         return Rock.findOneAndUpdate(
-          { _id: rockId },
+          { rockId },
           {
             $pull: {
               comments: {
-                _id: commentId,
+                commentId,
                 author: context.user.username,
               },
             },

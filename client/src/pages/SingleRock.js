@@ -1,11 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom"
-import CommentList from "../../src/components/CommentList"
+import CommentList from "../../src/components/CommentList";
+import CommentForm from "../../src/components/CommentForm";
+import { Delete } from "@mui/icons-material";
+
+import Auth from "../utils/auth";
 
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 
 import { QUERY_SINGLE_ROCK } from "../utils/queries";
+import { DELETE_ROCK} from "../utils/mutations"
 
 const SingleRock = () => {
   const { rockId } = useParams();
@@ -14,11 +19,36 @@ const SingleRock = () => {
   });
   const rock = data?.rock || {};
 
+
+  const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId}});
+  const handleDelete = async () => {
+    try {
+      const { data } = await deleteRock({rockId});
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (loading) {
       return <div> Your page is loading...</div>;
   }
   return (
-    <div key={rock._id} className="card">
+    <div>
+      <div key={rock._id} className="card">
+        <div>
+          {Auth.loggedIn() && Auth.getProfile().data.username === rock.user ? (
+            <div>
+              <Link to={`/users/${rock.user}`}>
+                <button onClick={handleDelete}>
+                  <Delete></Delete> Delete{" "}
+                </button>{" "}
+              </Link>{" "}
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
       <h3> {rock.name} </h3>
       <p> {rock.type} </p>
       <h4>Origin: {rock.origin} </h4>
@@ -32,7 +62,13 @@ const SingleRock = () => {
       <div className="col-12 col-md-10 mb-5">
         <CommentList
           comments={rock.comments}
+          username={rock.user}
+          rockId={rock._id}
+          commentId={rock.comments.commentId}
         />
+      </div>
+      <div className="m-3 p-4">
+        <CommentForm rockId={rock._id} />
       </div>
     </div>
   );
