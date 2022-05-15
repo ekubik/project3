@@ -7,6 +7,7 @@
     margin-bottom: 200px;
     background-color: #E3D9CA;
     border: solid #352920 2px;
+    border-radius: 3px;
 }
 
 .card-header {

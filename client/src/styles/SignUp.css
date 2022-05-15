@@ -2,6 +2,16 @@ body {
     font-family: 'Blinker', sans-serif
 }
 
+
+.cardHeader h1 {
+    background-color: black;
+    color: white;
+}
+
+.cardBody {
+    border-radius: 50px;
+}
+
 .submitButton {
     margin-top: 20px;
     padding: 5px 10px;
@@ -31,5 +41,19 @@ input {
 
 .redirectLink {
     text-decoration: none;
-    font-family: 'Blinker', sans-serif
+    font-family: 'Blinker', sans-serif;
+    font-weight: bolder;
+}
+
+.redirectLink:hover {
+    transform: scale(1.2);
+}
+
+h2 {
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+input {
+    background-color: white;;
 }
