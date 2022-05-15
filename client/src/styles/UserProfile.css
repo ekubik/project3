@@ -1,0 +1,54 @@
+ .rockCard {
+     margin: 20px 15px;
+     max-width: 300px;
+     min-width: 200px;
+     background-color: #83AFA6;
+     min-height: 250px;
+     margin-left:10px;
+     flex-wrap: wrap;
+     
+ }
+
+ .welcomeHeading {
+     font-family: 'Koulen', cursive;
+     font-size: 50px;
+
+ }
+
+ h3 {
+     font-size: 35px;
+     font-family: 'Koulen', cursive;
+     padding-top: 10px;
+ }
+
+ .rockLink {
+     text-decoration: none;
+ }
+
+ .contactUser a {
+     text-decoration: none;
+     font-size: 25px;
+ }
+
+ #rock-collection h2 {
+     font-size: 35px;
+    font-family: 'Koulen', cursive;
+    margin-top: 35px;
+    font-weight: lighter;
+
+ }
+
+ .addRockBtn {
+     font-size: 20px;
+     font-weight: bold;
+     border: solid #352920 2px;
+     background-color: black;
+     color: white;
+     margin-bottom: 30px;
+
+ }
+
+ .rockContainer {
+     flex-wrap: wrap;
+     flex-direction: row;
+ }
