@@ -25,10 +25,10 @@ const Header = () => {
           <>
             <Link to="/myprofile">
               {" "}
-              <button className="navButton"> My profile</button>
+              <button className="btn navButton"> My profile</button>
             </Link>
             
-              <Link to="/"> <button className="navButton" onClick={logout}> Log out</button> </Link>{" "}
+              <Link to="/"> <button className="btn navButton" onClick={logout}> Log out</button> </Link>{" "}
           </>
         ) : (
           <>

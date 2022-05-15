@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import CommentList from "../../src/components/CommentList"
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -25,8 +26,14 @@ const SingleRock = () => {
       <div>{rock.description}</div>
       <p>
         {" "}
-        <Link to={`/users/${rock.user}`} > {rock.user} </Link> added this rock to their collection on {rock.dateCollected}
+        <Link to={`/users/${rock.user}`}> {rock.user} </Link> added this rock to
+        their collection on {rock.dateCollected}
       </p>
+      <div className="col-12 col-md-10 mb-5">
+        <CommentList
+          comments={rock.comments}
+        />
+      </div>
     </div>
   );
 };
