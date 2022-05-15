@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+import {Delete} from "@mui/icons-material";
 
 import { QUERY_USER, QUERY_MY_PROFILE} from "../utils/queries";
 import { DELETE_ROCK } from "../utils/mutations";
@@ -76,9 +77,13 @@ return (
         rocks.map((rock) => (
           <div className="card" key={rock._id}>
             {" "}
-           <Link to={`/rocks/${rock._id}`}> <h3> {rock.name}</h3> </Link><p> {rock.description} </p>{" "}
+            <Link to={`/rocks/${rock._id}`}>
+              {" "}
+              <h3> {rock.name}</h3>{" "}
+            </Link>
+            <p> {rock.description} </p>{" "}
             <p> This rock was collected on {rock.dateCollected} </p>
-            <button onClick={handleDelete}> Delete </button>
+            {username ? <span></span> : <button onClick={handleDelete}> <Delete></Delete> Delete </button>}
           </div>
         ))
       )}{" "}
