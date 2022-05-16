@@ -13,16 +13,16 @@ const CommentList = ({comments}) => {
   let i=0;
 
  const {rockId} = useParams();
- /* const [deleteComment, { error }] = useMutation(DELETE_COMMENT, {
+ const [deleteComment, { error }] = useMutation(DELETE_COMMENT, {
     variables: { },
   });
-  const handleDelete = async () => {
+  const handleDelete = async (commentId) => {
     try {
-      const { data } = await deleteComment({ rockId,  commentId: comments[i].commentId})
+      const { data } = await deleteComment({commentId})
     } catch (error) {
       console.error(error);
     }
-  }*/
+  }
   
 
 if (!comments.length) {
@@ -55,7 +55,7 @@ return (
               {Auth.loggedIn() &&
               Auth.getProfile().data.username === comment.author ? (
                 <div>
-                    <button id="deleteButton" className="btn submitButton">
+                    <button id="deleteButton" className="btn submitButton" onClick={()=> handleDelete(comment.commentId)}>
                       <HighlightOff></HighlightOff> Delete{" "}
                     </button>{" "}
                   

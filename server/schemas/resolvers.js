@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Rock } = require("../models");
 const { signToken } = require("../utils/auth");
+const ObjectId = require("mongodb").ObjectId;
 
 const resolvers = {
   Query: {
@@ -65,12 +66,12 @@ const resolvers = {
           name,
           description,
           dateCollected,
-          user: context.user.username
+          user: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { username: context.user.username },
-          { $push: {rocks: {_id: rock._id}}},
+          { $push: { rocks: { _id: rock._id } } },
           {
             new: true,
           }
@@ -101,20 +102,25 @@ const resolvers = {
       );
     },*/
     deleteRock: async (_, rockId, context) => {
-      console.log ("What")
-      console.log(rockId);
+      console.log("What");
+      console.log(rockId.rockId);
+      console.log(`user ${context.user.username}`);
       if (context.user) {
-         await Rock.findOneAndDelete({
-          rockId,
-          user: context.user.username,
-        });
+        console.log("findoneandelete");
+        try {
+          await Rock.findOneAndDelete({
+            _id: ObjectId(rockId.rockId),
+          });
+        } catch (err) {
+          console.log("error", err);
+        }
 
         await User.findOneAndUpdate(
           {
             username: context.user.username,
           },
-          { $pull: { rocks: { _id: rockId } } },
-            {
+          { $pull: { rocks: ObjectId(rockId.rockId) } },
+          {
             new: true,
             runValidators: true,
           }
@@ -146,12 +152,11 @@ const resolvers = {
       console.log(commentId);
       if (context.user) {
         return Rock.findOneAndUpdate(
-          { rockId },
+          { _id: ObjectId(rockId.rockId) },
           {
             $pull: {
               comments: {
-                commentId,
-                author: context.user.username,
+                commentId: ObjectId(commentId),
               },
             },
           },

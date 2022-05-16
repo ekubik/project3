@@ -22,12 +22,13 @@ const SingleRock = () => {
 
   const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId: rockId }});
   const handleDelete = async (rockId) => {
-    console.log(rockId);
+    console.log("handle delete", rockId);
     try {
       const { data } = await deleteRock({rockId});
     } catch (error) {
       console.error(error);
     }
+    window.location.href ='/myprofile';
   };
 
   if (loading) {
@@ -39,11 +40,11 @@ const SingleRock = () => {
         <div>
           {Auth.loggedIn() && Auth.getProfile().data.username === rock.user ? (
             <div>
-              <Link to={`/users/${rock.user}`}>
+              {/* <Link to={`/users/${rock.user}`}> */}
                 <button key={rock._id} onClick={()=> handleDelete(rockId)}>
-                  <Delete></Delete> Delete{" "}
+                  <Delete></Delete> Deleteaaa{" "}
                 </button>{" "}
-              </Link>{" "}
+              {/* </Link>{" "} */}
             </div>
           ) : (
             <span></span>

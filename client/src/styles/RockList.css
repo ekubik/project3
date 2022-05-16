@@ -1,18 +1,30 @@
 
-.redirectLink {
+.rockNameLink {
     text-decoration: none;
     font-family: 'Blinker', sans-serif; 
    color: black;
 }
 
 .redirectLink:hover {
-        color: #58727F;
+        color: white;
 
 
 }
 
-.rockCards {
-    border: solid 2px #E5E5E5;
-    padding: 40px 20px;
-    margin: 30px 40px;
-}
+ .rockCards {
+     margin: 20px 15px;
+     max-width: 300px;
+     min-width: 250px;
+     background-color: #83AFA6;
+     height: 400px;
+
+     margin-left:10px;
+     flex-wrap: wrap;
+     border: solid 2px black;
+     border-radius: 6px;
+     
+ }
+
+ h4 {
+     font-weight: bold;
+ }
