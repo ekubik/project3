@@ -1,12 +1,10 @@
 import React from "react";
 import { Navigate, Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import {Delete} from "@mui/icons-material";
 import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import "../styles/UserProfile.css";
 
 import { QUERY_USER, QUERY_MY_PROFILE} from "../utils/queries";
-import { DELETE_ROCK } from "../utils/mutations";
 import Auth from "../utils/auth"
 
 const Profile =() => {
