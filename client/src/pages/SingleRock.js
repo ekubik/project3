@@ -17,10 +17,11 @@ const SingleRock = () => {
   const { loading, data } = useQuery(QUERY_SINGLE_ROCK, {
     variables: { rockId: rockId  },
   });
+
   const rock = data?.rock || {};
 
-  const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId }});
-  const handleDelete = async () => {
+  const [deleteRock, { error }] = useMutation(DELETE_ROCK, { variables: {rockId: rockId }});
+  const handleDelete = async (rockId) => {
     console.log(rockId);
     try {
       const { data } = await deleteRock({rockId});
@@ -39,7 +40,7 @@ const SingleRock = () => {
           {Auth.loggedIn() && Auth.getProfile().data.username === rock.user ? (
             <div>
               <Link to={`/users/${rock.user}`}>
-                <button onClick={handleDelete}>
+                <button key={rock._id} onClick={()=> handleDelete(rockId)}>
                   <Delete></Delete> Delete{" "}
                 </button>{" "}
               </Link>{" "}
@@ -51,7 +52,7 @@ const SingleRock = () => {
       </div>
       <div key={rock._id}>
         <h3> {rock.name} </h3>
-        <img src={require("../../src/assets/angry-rock.jpg")}/>
+        <img src={require("../../src/assets/angry-rock.jpg")} />
         <p> {rock.type} </p>
         <h4>Origin: {rock.origin} </h4>
         <h4>Description:</h4>

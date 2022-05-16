@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { Delete } from "@mui/icons-material";
+import "../../styles/Comments.css";
 
 import { ADD_COMMENT } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -36,7 +36,7 @@ const CommentForm = ({rockId}) => {
      
     return ( <div>
         <h2> What do you think about this rock?</h2>
-        <p> Join the discussion. </p>
+        <p className="tagLine"> Join the discussion. </p>
         {Auth.loggedIn() ? (
         <>
           <form
@@ -54,7 +54,7 @@ const CommentForm = ({rockId}) => {
               ></textarea>
             </div>
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="btn addCommentBtn" type="submit">
                 Add Comment
               </button>
             </div>

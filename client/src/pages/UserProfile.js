@@ -37,12 +37,19 @@ if (!user?.username) {
 
 return (
   <div className="container-fluid">
-    <h2 className="welcomeHeading" > Welcome to {username ? `${user.username}'s` : "your"} profile! </h2>
+    <h2 className="welcomeHeading">
+      {" "}
+      Welcome to {username ? `${user.username}'s` : "your"} profile!{" "}
+    </h2>
 
     <div> {user.bio} </div>
     <div className="contactUser">
       {" "}
-      <a href={`mailto:${user.email}`}> <MailOutlineRounded className="m-1"></MailOutlineRounded> Get in touch with {user.username} </a>
+      <a href={`mailto:${user.email}`}>
+        {" "}
+        <MailOutlineRounded className="m-1"></MailOutlineRounded> Get in touch
+        with {user.username}{" "}
+      </a>
     </div>
     <div id="rock-collection">
       <h2>
@@ -73,6 +80,7 @@ return (
               {" "}
               <h3> {rock.name}</h3>{" "}
             </Link>
+            <img src={require("../../src/assets/angry-rock.jpg")} />
             <p> {rock.description} </p>{" "}
             <p> This rock was collected on {rock.dateCollected} </p>
             {username ? (

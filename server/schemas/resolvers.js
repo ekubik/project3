@@ -102,6 +102,7 @@ const resolvers = {
     },*/
     deleteRock: async (_, rockId, context) => {
       console.log ("What")
+      console.log(rockId);
       if (context.user) {
          await Rock.findOneAndDelete({
           rockId,
