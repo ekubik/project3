@@ -80,17 +80,9 @@ return (
               {" "}
               <h3> {rock.name}</h3>{" "}
             </Link>
-            <img src={require("../../src/assets/angry-rock.jpg")} />
+            <img className="placeholderImg" alt="placeholder image" src={require("../../src/assets/angry-rock.jpg")} />
             <p> {rock.description} </p>{" "}
             <p> This rock was collected on {rock.dateCollected} </p>
-            {username ? (
-              <span></span>
-            ) : (
-              <button className="btn">
-                {" "}
-                <Delete></Delete> Delete{" "}
-              </button>
-            )}
           </div>
         ))
       )}{" "}

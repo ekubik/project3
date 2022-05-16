@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 import CommentList from "../../src/components/CommentList";
 import CommentForm from "../../src/components/CommentForm";
-import { Delete } from "@mui/icons-material";
+import "../styles/RockList.css";
 
 import Auth from "../utils/auth";
 
@@ -41,9 +41,9 @@ const SingleRock = () => {
           {Auth.loggedIn() && Auth.getProfile().data.username === rock.user ? (
             <div>
               {/* <Link to={`/users/${rock.user}`}> */}
-                <button key={rock._id} onClick={()=> handleDelete(rockId)}>
-                  <Delete></Delete> Deleteaaa{" "}
-                </button>{" "}
+              <button className="btn deleteRockBtn" key={rock._id} onClick={() => handleDelete(rockId)}>
+               Delete Rock{" "}
+              </button>{" "}
               {/* </Link>{" "} */}
             </div>
           ) : (
@@ -51,17 +51,19 @@ const SingleRock = () => {
           )}
         </div>
       </div>
-      <div key={rock._id}>
+      <div className="container-fluid" key={rock._id}>
         <h3> {rock.name} </h3>
         <img src={require("../../src/assets/angry-rock.jpg")} />
-        <p> {rock.type} </p>
+        <h4>Type: {rock.type} </h4>
         <h4>Origin: {rock.origin} </h4>
         <h4>Description:</h4>
         <div>{rock.description}</div>
-        <p>
-          {" "}
-          <Link to={`/users/${rock.user}`}> {rock.user} </Link> added this rock
-          to their collection on {rock.dateCollected}
+        <p className="mt-4">
+          <div>
+            {" "}
+            <Link to={`/users/${rock.user}`}> {rock.user} </Link> added this
+            rock to their collection on {rock.dateCollected}
+          </div>
         </p>
         <div className="col-12 col-md-10 mb-5">
           <CommentList

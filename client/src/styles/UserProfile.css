@@ -3,7 +3,7 @@
      max-width: 300px;
      min-width: 200px;
      background-color: #83AFA6;
-     min-height: 250px;
+     min-height: 350px;
      margin-left:10px;
      flex-wrap: wrap;
      
@@ -51,4 +51,8 @@
  .rockContainer {
      flex-wrap: wrap;
      flex-direction: row;
+ }
+
+  .placeholderImg {
+     width: 200px;
  }

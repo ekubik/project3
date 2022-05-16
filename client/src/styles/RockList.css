@@ -13,11 +13,10 @@
 
  .rockCards {
      margin: 20px 15px;
-     max-width: 300px;
-     min-width: 250px;
      background-color: #83AFA6;
-     height: 400px;
-
+     min-width: 250px;
+     max-width: 300px;
+     height: 450px;
      margin-left:10px;
      flex-wrap: wrap;
      border: solid 2px black;
@@ -28,3 +27,19 @@
  h4 {
      font-weight: bold;
  }
+
+ .deleteRockBtn {
+     font-size: 15px;
+     font-weight: bold;
+     border: solid #352920 2px;
+     background-color: black;
+     color: white;
+     margin-bottom: 30px;
+
+ }
+
+ .rockContainer {
+     flex-wrap: wrap;
+     flex-direction: column;
+ }
+

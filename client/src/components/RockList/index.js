@@ -15,11 +15,11 @@ const RockList = ({
     <div>
       <div>
         {showTitle && <h2> {title}</h2>}
-        <div className="d-flex container-fluid">
+        <div className="d-flex container-fluid rockContainer ">
           {rocks &&
             rocks.map((rock) => (
               <div
-                className="rockCards container-fluid justify-content-center"
+                className="rockCards row col-4  justify-content-center"
                 key={rock._id}
               >
                 <div className="row justify-content-center">
@@ -31,7 +31,7 @@ const RockList = ({
                   <div>
                     <img src={require("../../assets/angry-rock.jpg")} />
                   </div>
-                  <div >
+                  <div>
                     {" "}
                     <h4> Description: </h4>
                     {rock.description}
